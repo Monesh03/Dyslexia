@@ -1,16 +1,91 @@
 {% extends "base.html" %}
 {% block content %}
 
-<!-- Full-screen dashboard background -->
-<div class="dashboard-bg">
-  <div class="overlay"></div>
-  <div class="dashboard-content text-center">
-    <h1 class="fade-in display-4 fw-bold text-light">
-      Welcome, {{ session['user'] }} 👋
-    </h1>
-    <p class="fade-in delay-1 text-light fs-5">
-      Your Personal Dyslexia Learning Assistant
-    </p>
+<div class="container mt-5">
+  <div class="welcome-section text-center mb-5">
+    <h1 class="display-4 fw-bold mb-3">Welcome, {{ session['user'] }}</h1>
+    <p class="lead text-muted">Your Personal Dyslexia Learning Assistant</p>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-6 col-lg-3">
+      <div class="dashboard-card">
+        <div class="card-icon text-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+          </svg>
+        </div>
+        <h5 class="mt-3 mb-2">Learning Tools</h5>
+        <p class="text-muted small mb-3">Access text simplification and reading practice</p>
+        <a href="/tools" class="btn btn-primary btn-sm w-100">Open Tools</a>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <div class="dashboard-card">
+        <div class="card-icon text-success">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-3.5-7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z"/>
+          </svg>
+        </div>
+        <h5 class="mt-3 mb-2">Mock Tests</h5>
+        <p class="text-muted small mb-3">Practice with interactive assessments</p>
+        <a href="/mocktest" class="btn btn-success btn-sm w-100">Take Test</a>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <div class="dashboard-card">
+        <div class="card-icon text-info">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+          </svg>
+        </div>
+        <h5 class="mt-3 mb-2">Profile</h5>
+        <p class="text-muted small mb-3">Update your personal information</p>
+        <a href="/profile" class="btn btn-info btn-sm w-100">View Profile</a>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <div class="dashboard-card">
+        <div class="card-icon text-warning">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z"/>
+            <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
+          </svg>
+        </div>
+        <h5 class="mt-3 mb-2">Achievements</h5>
+        <p class="text-muted small mb-3">Track your learning progress</p>
+        <button class="btn btn-warning btn-sm w-100" disabled>Coming Soon</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-lg-8">
+      <div class="info-card">
+        <h4 class="mb-3">Quick Tips for Better Learning</h4>
+        <ul class="tips-list">
+          <li>Use the text simplification tool to make complex sentences easier to understand</li>
+          <li>Practice reading aloud with the voice recognition feature for instant feedback</li>
+          <li>Take regular breaks to avoid fatigue</li>
+          <li>Use dyslexia-friendly fonts and adjust text spacing as needed</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="info-card text-center">
+        <h5 class="mb-3">Daily Goal</h5>
+        <div class="progress-circle">
+          <div class="progress-text">
+            <span class="progress-value">0</span>
+            <span class="progress-label">minutes</span>
+          </div>
+        </div>
+        <p class="text-muted small mt-3">Keep practicing to improve your skills</p>
+      </div>
+    </div>
   </div>
 </div>
 

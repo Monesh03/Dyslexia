@@ -1,27 +1,101 @@
 {% extends "base.html" %}
 {% block content %}
-<h3>🧠 Your Learning Profile</h3>
 
-<form method="POST" class="mt-3">
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="profile-header text-center mb-4">
+        <div class="profile-avatar mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+          </svg>
+        </div>
+        <h2 class="mb-2">Your Learning Profile</h2>
+        <p class="text-muted">Personalize your learning experience</p>
+      </div>
 
-  <label class="form-label">Full Name</label>
-  <input type="text" name="name" class="form-control mb-2" value="{{ user.name or '' }}">
+      <div class="profile-card">
+        <form method="POST">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Full Name</label>
+              <input type="text" name="name" class="form-control" placeholder="Enter your full name" value="{{ user.name or '' }}" required>
+            </div>
 
-  <label class="form-label">Age</label>
-  <input type="number" name="age" class="form-control mb-2" value="{{ user.age or '' }}">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Age</label>
+              <input type="number" name="age" class="form-control" placeholder="Enter your age" value="{{ user.age or '' }}" min="5" max="100">
+            </div>
 
-  <label class="form-label">Class / Standard</label>
-  <input type="text" name="standard" class="form-control mb-2" placeholder="e.g., Grade 6" value="{{ user.standard or '' }}">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Class / Standard</label>
+              <input type="text" name="standard" class="form-control" placeholder="e.g., Grade 6" value="{{ user.standard or '' }}">
+            </div>
 
-  <label class="form-label">Select your struggles</label>
-  <select name="struggles" class="form-select mb-3">
-    <option value="">-- Select One --</option>
-    <option value="Reading" {% if user.struggles == 'Reading' %}selected{% endif %}>Reading</option>
-    <option value="Writing" {% if user.struggles == 'Writing' %}selected{% endif %}>Writing</option>
-    <option value="Spelling" {% if user.struggles == 'Spelling' %}selected{% endif %}>Spelling</option>
-    <option value="Comprehension" {% if user.struggles == 'Comprehension' %}selected{% endif %}>Comprehension</option>
-  </select>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold">Primary Learning Challenge</label>
+              <select name="struggles" class="form-select">
+                <option value="">Select one</option>
+                <option value="Reading" {% if user.struggles == 'Reading' %}selected{% endif %}>Reading</option>
+                <option value="Writing" {% if user.struggles == 'Writing' %}selected{% endif %}>Writing</option>
+                <option value="Spelling" {% if user.struggles == 'Spelling' %}selected{% endif %}>Spelling</option>
+                <option value="Comprehension" {% if user.struggles == 'Comprehension' %}selected{% endif %}>Comprehension</option>
+                <option value="Multiple" {% if user.struggles == 'Multiple' %}selected{% endif %}>Multiple Areas</option>
+              </select>
+            </div>
 
-  <button class="btn btn-primary">Save Profile</button>
-</form>
+            <div class="col-12">
+              <div class="info-box">
+                <h6 class="mb-2">Why is this information helpful?</h6>
+                <p class="small text-muted mb-0">
+                  Understanding your learning profile helps us tailor the tools and exercises to your specific needs,
+                  making your learning experience more effective and enjoyable.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-12 text-center">
+              <button type="submit" class="btn btn-primary btn-lg px-5">Save Profile</button>
+              <a href="/dashboard" class="btn btn-outline-secondary btn-lg px-5 ms-2">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      {% if user.name %}
+      <div class="profile-summary mt-4">
+        <h5 class="mb-3">Profile Summary</h5>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="summary-item">
+              <span class="summary-label">Username</span>
+              <span class="summary-value">{{ user.username }}</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="summary-item">
+              <span class="summary-label">Name</span>
+              <span class="summary-value">{{ user.name or 'Not set' }}</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="summary-item">
+              <span class="summary-label">Age</span>
+              <span class="summary-value">{{ user.age or 'Not set' }}</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="summary-item">
+              <span class="summary-label">Standard</span>
+              <span class="summary-value">{{ user.standard or 'Not set' }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
 {% endblock %}
