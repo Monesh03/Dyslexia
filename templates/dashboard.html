@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Full-screen dashboard background -->
+<div class="dashboard-bg">
+  <div class="overlay"></div>
+  <div class="dashboard-content text-center">
+    <h1 class="fade-in display-4 fw-bold text-light">
+      Welcome, {{ session['user'] }} 👋
+    </h1>
+    <p class="fade-in delay-1 text-light fs-5">
+      Your Personal Dyslexia Learning Assistant
+    </p>
+  </div>
+</div>
+
+{% endblock %}
